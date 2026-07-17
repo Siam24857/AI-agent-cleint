@@ -58,12 +58,12 @@ export default function BlogDetailPage() {
   }, [slug]);
 
   return (
-    <main className="bg-white">
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100">
+    <main className="bg-[#1a1a1a]">
+      <section className="bg-gradient-to-br from-[#2d2d2d] via-[#333333] to-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Link
             href="/blog"
-            className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700"
+            className="inline-flex items-center text-sm font-medium text-[#ffea00] hover:text-[#ffd700]"
           >
             <ArrowLeft className="mr-1 h-4 w-4" />
             Back to Blog
@@ -71,21 +71,21 @@ export default function BlogDetailPage() {
 
           {loading ? (
             <div className="mt-6 space-y-4">
-              <div className="h-4 w-1/4 animate-pulse rounded bg-slate-200" />
-              <div className="h-10 w-3/4 animate-pulse rounded bg-slate-200" />
-              <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
+              <div className="h-4 w-1/4 animate-pulse rounded bg-[#444444]" />
+              <div className="h-10 w-3/4 animate-pulse rounded bg-[#444444]" />
+              <div className="h-4 w-1/2 animate-pulse rounded bg-[#444444]" />
             </div>
           ) : error ? (
-            <p className="mt-6 text-slate-700">{error}</p>
+            <p className="mt-6 text-[#aaaaaa]">{error}</p>
           ) : post ? (
             <>
-              <span className="mt-6 inline-block rounded-full bg-indigo-100 px-4 py-1 text-sm font-medium text-indigo-700">
+              <span className="mt-6 inline-block rounded-full bg-[#ffea00]/20 px-4 py-1 text-sm font-medium text-[#ffea00]">
                 {post.category}
               </span>
-              <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 {post.title}
               </h1>
-              <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
+              <div className="mt-4 flex items-center gap-2 text-sm text-[#888888]">
                 <Calendar className="h-4 w-4" />
                 {formatDate(post.publishedAt)}
               </div>
@@ -98,15 +98,15 @@ export default function BlogDetailPage() {
         {loading ? (
           <div className="space-y-4">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="h-4 w-full animate-pulse rounded bg-slate-200" />
+              <div key={i} className="h-4 w-full animate-pulse rounded bg-[#444444]" />
             ))}
           </div>
         ) : error ? (
-          <div className="rounded-xl bg-indigo-50 p-8 text-center">
-            <p className="text-slate-700">{error}</p>
+          <div className="rounded-xl bg-[#333333] p-8 text-center">
+            <p className="text-[#aaaaaa]">{error}</p>
             <Link
               href="/blog"
-              className="mt-4 inline-flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-indigo-700"
+              className="mt-4 inline-flex items-center rounded-lg bg-[#ffea00] px-6 py-3 text-sm font-semibold text-[#1a1a1a] shadow hover:bg-[#ffd700]"
             >
               Back to Blog
             </Link>
@@ -114,18 +114,18 @@ export default function BlogDetailPage() {
         ) : post ? (
           <article className="prose prose-slate max-w-none">
             {post.content.split("\n\n").map((para, i) => (
-              <p key={i} className="mb-5 leading-relaxed text-slate-700">
+              <p key={i} className="mb-5 leading-relaxed text-[#cccccc]">
                 {para}
               </p>
             ))}
 
             {Array.isArray(post.tags) && post.tags.length > 0 && (
-              <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-6">
-                <Tag className="h-4 w-4 text-indigo-600" />
+              <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-[#444444] pt-6">
+                <Tag className="h-4 w-4 text-[#ffea00]" />
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700"
+                    className="rounded-full bg-[#ffea00]/20 px-3 py-1 text-xs font-medium text-[#ffea00]"
                   >
                     {tag}
                   </span>
@@ -136,7 +136,7 @@ export default function BlogDetailPage() {
             <div className="mt-10">
               <Link
                 href="/blog"
-                className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700"
+                className="inline-flex items-center text-sm font-medium text-[#ffea00] hover:text-[#ffd700]"
               >
                 <ArrowLeft className="mr-1 h-4 w-4" />
                 Back to Blog

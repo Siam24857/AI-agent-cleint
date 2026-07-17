@@ -51,7 +51,7 @@ export default function RoadmapPage() {
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center gap-2 mb-2">
-          <Sparkles className="h-7 w-7 text-indigo-600" />
+          <Sparkles className="h-7 w-7 text-[#ffea00]" />
           <h1 className="text-3xl font-bold text-gray-900">AI Learning Roadmap</h1>
         </div>
         <p className="text-gray-600 mb-8">
@@ -59,7 +59,7 @@ export default function RoadmapPage() {
         </p>
 
         {!roadmap && (
-          <div className="bg-white rounded-xl shadow p-6 mb-6">
+          <div className="bg-[#2d2d2d] rounded-xl shadow p-6 mb-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Target Role</label>
@@ -67,7 +67,7 @@ export default function RoadmapPage() {
                   value={targetRole}
                   onChange={(e) => setTargetRole(e.target.value)}
                   placeholder="e.g. Senior Frontend Engineer"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
                 />
               </div>
               <div>
@@ -75,7 +75,7 @@ export default function RoadmapPage() {
                 <select
                   value={timeframe}
                   onChange={(e) => setTimeframe(e.target.value)}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
                 >
                   <option value="3 months">3 months</option>
                   <option value="6 months">6 months</option>
@@ -86,7 +86,7 @@ export default function RoadmapPage() {
             <button
               onClick={generate}
               disabled={loading || !targetRole.trim()}
-              className="mt-4 w-full bg-indigo-600 text-white py-3 rounded-md font-semibold hover:bg-indigo-700 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="mt-4 w-full bg-[#ffea00] text-[#1a1a1a] py-3 rounded-md font-semibold hover:bg-[#d4b800] disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Sparkles className="h-5 w-5" />}
               {loading ? "Generating Plan..." : "Generate My Roadmap"}
@@ -94,13 +94,13 @@ export default function RoadmapPage() {
 
             {saved.length > 0 && (
               <div className="mt-6">
-                <h3 className="font-semibold text-gray-800 mb-2">Your saved roadmaps</h3>
+                <h3 className="font-semibold text-[#f0f0f0] mb-2">Your saved roadmaps</h3>
                 <div className="flex flex-wrap gap-2">
                   {saved.map((r) => (
                     <button
                       key={r._id}
                       onClick={() => openSaved(r)}
-                      className="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-100"
+                      className="bg-indigo-50 text-[#ffea00] px-3 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-100"
                     >
                       {r.title}
                     </button>
@@ -113,7 +113,7 @@ export default function RoadmapPage() {
 
         {roadmap && (
           <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow p-6">
+            <div className="bg-[#2d2d2d] rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">{roadmap.title}</h2>
@@ -125,15 +125,15 @@ export default function RoadmapPage() {
                 </div>
                 <button
                   onClick={() => setRoadmap(null)}
-                  className="text-sm text-indigo-600 hover:underline"
+                  className="text-sm text-[#ffea00] hover:underline"
                 >
                   New Roadmap
                 </button>
               </div>
               {roadmap.plan?.gaps?.length > 0 && (
                 <div className="mt-4">
-                  <p className="font-medium text-gray-800 flex items-center gap-1">
-                    <Target className="h-4 w-4 text-indigo-600" /> Skill gaps to close
+                  <p className="font-medium text-[#f0f0f0] flex items-center gap-1">
+                    <Target className="h-4 w-4 text-[#ffea00]" /> Skill gaps to close
                   </p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {roadmap.plan.gaps.map((g: string, i: number) => (
@@ -147,9 +147,9 @@ export default function RoadmapPage() {
             </div>
 
             {(roadmap.weekPlan || roadmap.plan?.learningPath || []).map((week: any, i: number) => (
-              <div key={i} className="bg-white rounded-xl shadow p-6">
+              <div key={i} className="bg-[#2d2d2d] rounded-xl shadow p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">
+                  <span className="bg-[#ffea00] text-[#1a1a1a] w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold">
                     {week.week || i + 1}
                   </span>
                   <h3 className="font-semibold text-gray-900">{week.title}</h3>
@@ -175,8 +175,8 @@ export default function RoadmapPage() {
                 )}
                 {week.resources?.length > 0 && (
                   <div className="mt-2">
-                    <p className="text-sm font-medium text-gray-800 flex items-center gap-1">
-                      <BookOpen className="h-4 w-4 text-indigo-600" /> Resources
+                    <p className="text-sm font-medium text-[#f0f0f0] flex items-center gap-1">
+                      <BookOpen className="h-4 w-4 text-[#ffea00]" /> Resources
                     </p>
                     <ul className="mt-1 space-y-1">
                       {week.resources.map((r: any, j: number) => (
@@ -185,7 +185,7 @@ export default function RoadmapPage() {
                             href={r.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-indigo-600 hover:underline text-sm"
+                            className="text-[#ffea00] hover:underline text-sm"
                           >
                             {r.title}
                           </a>

@@ -73,12 +73,11 @@ export default function HomePage() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <main>
+<main>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600 text-white">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,theme(colors.white),transparent_40%)]" />
+      <section className="relative overflow-hidden bg-[#000000] text-[#ffea00]">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#ffea00]/20 px-4 py-1.5 text-sm font-medium mb-6">
             <Zap className="h-4 w-4" /> Powered by Gemini AI
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -92,14 +91,14 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => router.push(isAuthenticated ? "/recommendations" : "/register")}
-              className="bg-white text-indigo-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center gap-2"
+              className="bg-[#ffea00] text-[#000000] px-8 py-3 rounded-lg font-semibold hover:bg-[#ffea00] transition flex items-center justify-center gap-2"
             >
               {isAuthenticated ? "Go to Dashboard" : "Get Started Free"}{" "}
               <ArrowRight className="h-4 w-4" />
             </button>
             <Link
               href="/features"
-              className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
+              className="border-2 border-[#ffea00] px-8 py-3 rounded-lg font-semibold hover:bg-[#ffea00]/10 transition"
             >
               Explore Features
             </Link>
@@ -120,11 +119,11 @@ export default function HomePage() {
       <FeaturesPage />
 
       {/* How it works */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#000000]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#ffea00] mb-4">How It Works</h2>
+            <p className="text-lg text-[#cccccc] max-w-2xl mx-auto">
               A simple, guided path from where you are to where you want to be.
             </p>
           </div>
@@ -133,12 +132,12 @@ export default function HomePage() {
               const Icon = step.icon;
               return (
                 <div key={step.title} className="text-center">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center mb-5">
-                    <Icon className="h-8 w-8 text-indigo-600" />
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-[#1a1a1a] flex items-center justify-center mb-5">
+                    <Icon className="h-8 w-8 text-[#ffea00]" />
                   </div>
-                  <div className="text-sm font-semibold text-indigo-600 mb-1">STEP {i + 1}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600">{step.desc}</p>
+                  <div className="text-sm font-semibold text-[#ffea00] mb-1">STEP {i + 1}</div>
+                  <h3 className="text-xl font-semibold text-[#ffea00] mb-2">{step.title}</h3>
+                  <p className="text-[#cccccc]">{step.desc}</p>
                 </div>
               );
             })}
@@ -147,13 +146,13 @@ export default function HomePage() {
       </section>
 
       {/* AI Tools highlight */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="py-20 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#ffea00] mb-4">
               Intelligent Tools, Real Outcomes
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-[#cccccc] max-w-2xl mx-auto">
               Every feature is powered by reasoning AI, not just text generation.
             </p>
           </div>
@@ -168,10 +167,10 @@ export default function HomePage() {
             ].map((t) => {
               const Icon = t.icon;
               return (
-                <div key={t.title} className="bg-white rounded-xl shadow p-6">
-                  <Icon className="h-8 w-8 text-indigo-600 mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{t.title}</h3>
-                  <p className="text-gray-600 text-sm">{t.desc}</p>
+                <div key={t.title} className="bg-[#1a1a1a] rounded-xl shadow p-6">
+                  <Icon className="h-8 w-8 text-[#ffea00] mb-4" />
+                  <h3 className="text-lg font-semibold text-[#ffea00] mb-1">{t.title}</h3>
+                  <p className="text-[#cccccc] text-sm">{t.desc}</p>
                 </div>
               );
             })}
@@ -180,25 +179,25 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#000000]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#ffea00] mb-4">
               Loved by Job Seekers
             </h2>
-            <p className="text-lg text-gray-600">Real stories from people who leveled up their careers.</p>
+            <p className="text-lg text-[#cccccc]">Real stories from people who leveled up their careers.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-gray-50 rounded-xl p-6 border">
+              <div key={t.name} className="bg-[#1a1a1a] rounded-xl p-6 border border-[#333333]">
                 <div className="flex gap-1 mb-3">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Star key={i} className="h-4 w-4 text-[#ffea00] fill-[#ffea00]" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4">“{t.content}”</p>
-                <div className="font-semibold text-gray-900">{t.name}</div>
-                <div className="text-sm text-gray-500">{t.role}</div>
+                <p className="text-[#cccccc] mb-4">"{t.content}"</p>
+                <div className="font-semibold text-[#ffea00]">{t.name}</div>
+                <div className="text-sm text-[#999999]">{t.role}</div>
               </div>
             ))}
           </div>
@@ -206,7 +205,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-indigo-700 text-white">
+      <section className="py-20 bg-[#1a1a1a] text-[#ffea00]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Start Building Your Dream Career Today
@@ -216,7 +215,7 @@ export default function HomePage() {
           </p>
           <Link
             href={isAuthenticated ? "/recommendations" : "/register"}
-            className="inline-flex items-center gap-2 bg-white text-indigo-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+            className="inline-flex items-center gap-2 bg-[#ffea00] text-[#000000] px-8 py-3 rounded-lg font-semibold hover:bg-[#ffea00] transition"
           >
             Create Free Account <ArrowRight className="h-4 w-4" />
           </Link>
@@ -224,10 +223,10 @@ export default function HomePage() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="py-16 bg-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Stay Ahead in Your Career</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#ffea00] mb-3">Stay Ahead in Your Career</h2>
+          <p className="text-[#cccccc] mb-6">
             Get weekly AI career tips, job market insights, and product updates.
           </p>
           <form
@@ -238,11 +237,11 @@ export default function HomePage() {
               type="email"
               required
               placeholder="you@example.com"
-              className="flex-1 rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 rounded-md border border-[#333333] bg-[#000000] px-4 py-3 text-[#ffea00] focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
             <button
               type="submit"
-              className="bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700"
+              className="bg-[#ffea00] text-[#000000] px-6 py-3 rounded-md font-semibold hover:bg-[#ffea00]"
             >
               Subscribe
             </button>

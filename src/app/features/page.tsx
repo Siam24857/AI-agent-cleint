@@ -80,17 +80,17 @@ const steps = [
 
 export default function FeaturesPage() {
   return (
-    <main className="bg-white">
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100">
+    <main className="bg-[#1a1a1a]">
+      <section className="bg-gradient-to-br from-[#2d2d2d] via-[#333333] to-[#1a1a1a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block rounded-full bg-indigo-100 px-4 py-1 text-sm font-medium text-indigo-700">
+            <span className="inline-block rounded-full bg-[#ffea00]/20 px-4 py-1 text-sm font-medium text-[#ffea00]">
               Platform Features
             </span>
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Everything you need to grow your career with AI
             </h1>
-            <p className="mt-4 text-lg text-slate-600">
+            <p className="mt-4 text-lg text-[#aaaaaa]">
               AI Career Mentor combines resume analysis, personalised
               recommendations, and an intelligent assistant into one guided
               experience — built for job seekers, career switchers, and lifelong
@@ -99,14 +99,14 @@ export default function FeaturesPage() {
             <div className="mt-8 flex justify-center gap-4">
               <Link
                 href="/register"
-                className="inline-flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-indigo-700"
+                className="inline-flex items-center rounded-lg bg-[#ffea00] px-6 py-3 text-sm font-semibold text-[#1a1a1a] shadow hover:bg-[#ffd700]"
               >
                 Get started free
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <Link
                 href="/chat"
-                className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50"
+                className="inline-flex items-center rounded-lg border border-[#444444] bg-[#2d2d2d] px-6 py-3 text-sm font-semibold text-[#aaaaaa] shadow-sm hover:bg-[#333333]"
               >
                 Try the assistant
               </Link>
@@ -123,18 +123,18 @@ export default function FeaturesPage() {
               <Link
                 key={feature.title}
                 href={feature.href}
-                className="group bg-white rounded-xl shadow p-6 transition hover:shadow-md hover:-translate-y-0.5"
+                className="group bg-[#2d2d2d] rounded-xl shadow p-6 transition hover:shadow-md hover:-translate-y-0.5"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
-                  <Icon className="h-6 w-6 text-indigo-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#ffea00]/20">
+                  <Icon className="h-6 w-6 text-[#ffea00]" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                <h3 className="mt-4 text-lg font-semibold text-white">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-[#aaaaaa]">
                   {feature.description}
                 </p>
-                <span className="mt-4 inline-flex items-center text-sm font-medium text-indigo-600 group-hover:text-indigo-700">
+                <span className="mt-4 inline-flex items-center text-sm font-medium text-[#ffea00] group-hover:text-[#ffd700]">
                   Open feature
                   <ArrowRight className="ml-1 h-4 w-4" />
                 </span>
@@ -144,13 +144,13 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100">
+      <section className="bg-gradient-to-br from-[#2d2d2d] via-[#333333] to-[#1a1a1a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+            <h2 className="text-3xl font-bold tracking-tight text-white">
               How it works
             </h2>
-            <p className="mt-3 text-lg text-slate-600">
+            <p className="mt-3 text-lg text-[#aaaaaa]">
               From first sign-in to a concrete action plan in three simple steps.
             </p>
           </div>
@@ -158,19 +158,19 @@ export default function FeaturesPage() {
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={step.title} className="bg-white rounded-xl shadow p-8">
+                <div key={step.title} className="bg-[#2d2d2d] rounded-xl shadow p-8">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#ffea00] text-[#1a1a1a]">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="text-2xl font-bold text-indigo-200">
+                    <span className="text-2xl font-bold text-[#ffea00]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                  <h3 className="mt-4 text-lg font-semibold text-white">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">
+                  <p className="mt-2 text-sm text-[#aaaaaa]">
                     {step.description}
                   </p>
                 </div>
@@ -181,16 +181,16 @@ export default function FeaturesPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-indigo-600 rounded-2xl px-8 py-12 text-center shadow-lg">
-          <h2 className="text-3xl font-bold tracking-tight text-white">
+        <div className="bg-[#ffea00] rounded-2xl px-8 py-12 text-center shadow-lg">
+          <h2 className="text-3xl font-bold tracking-tight text-[#1a1a1a]">
             Ready to plan your next career move?
           </h2>
-          <p className="mt-3 text-lg text-indigo-100">
+          <p className="mt-3 text-lg text-[#1a1a1a]">
             Create a free account and let AI map the fastest path to your goals.
           </p>
           <Link
             href="/register"
-            className="mt-8 inline-flex items-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-indigo-700 shadow hover:bg-indigo-50"
+            className="mt-8 inline-flex items-center rounded-lg bg-[#1a1a1a] px-6 py-3 text-sm font-semibold text-[#ffea00] shadow hover:bg-[#ffd700]"
           >
             Create your free account
             <ArrowRight className="ml-2 h-4 w-4" />

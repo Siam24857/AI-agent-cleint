@@ -50,12 +50,19 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const showAuthed = mounted && isAuthenticated;
 
   useEffect(() => {
     setOpen(false);
@@ -69,24 +76,22 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-lg border-b border-gray-200/70 shadow-[0_4px_24px_-12px_rgba(79,70,229,0.25)]"
-          : "bg-white/60 backdrop-blur-md border-b border-transparent"
+          ? "bg-[#2d2d2d]/80 backdrop-blur-lg border-b border-[#444444]/70 shadow-[0_4px_24px_-12px_rgba(255,234,0,0.25)]"
+          : "bg-[#2d2d2d]/60 backdrop-blur-md border-b border-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand */}
         <Link href="/" className="group flex items-center gap-2.5">
-          <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-blue-500 text-white shadow-lg shadow-indigo-500/30 transition-transform group-hover:scale-105">
+          <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-[#ffea00] via-[#ffd700] to-[#ffea00] text-[#1a1a1a] shadow-lg shadow-[#ffea00]/30 transition-transform group-hover:scale-105">
             <Sparkles className="h-5 w-5" />
-            <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-400 to-blue-400 opacity-0 blur transition-opacity group-hover:opacity-60" />
+            <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#ffea00] to-[#ffd700] opacity-0 blur transition-opacity group-hover:opacity-60" />
           </span>
-          <span className="text-lg font-extrabold tracking-tight text-gray-900">
-            AI<span className="text-indigo-600">Career</span>
-            <span className="text-violet-500">Mentor</span>
+          <span className="text-lg font-extrabold tracking-tight text-[#e0e0e0]">
+            AI<span className="text-[#ffea00]">Career</span>
+            <span className="text-[#ffd700]">Mentor</span>
           </span>
         </Link>
 
-        {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-1">
           {publicLinks.map((l) => (
             <Link
@@ -94,18 +99,17 @@ export default function Navbar() {
               href={l.href}
               className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-colors ${
                 isActive(pathname, l.href)
-                  ? "text-indigo-700"
-                  : "text-gray-600 hover:text-indigo-700"
+                  ? "text-[#ffea00]"
+                  : "text-[#aaaaaa] hover:text-[#ffea00]"
               }`}
             >
               {l.label}
               {isActive(pathname, l.href) && (
-                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gradient-to-r from-[#ffea00] to-[#ffd700]" />
               )}
             </Link>
           ))}
 
-          {/* Features mega-menu */}
           <div
             className="relative"
             onMouseEnter={() => setFeaturesOpen(true)}
@@ -119,8 +123,8 @@ export default function Navbar() {
                 pathname.startsWith("/interview") ||
                 pathname.startsWith("/roadmap") ||
                 pathname.startsWith("/skills")
-                  ? "text-indigo-700"
-                  : "text-gray-600 hover:text-indigo-700"
+                  ? "text-[#ffea00]"
+                  : "text-[#aaaaaa] hover:text-[#ffea00]"
               }`}
             >
               Features
@@ -134,7 +138,7 @@ export default function Navbar() {
                   : "invisible opacity-0 -translate-y-1"
               }`}
             >
-              <div className="rounded-2xl border border-gray-100 bg-white p-3 shadow-2xl shadow-indigo-500/10">
+              <div className="rounded-2xl border border-[#444444] bg-[#2d2d2d] p-3 shadow-2xl shadow-[#ffea00]/10">
                 <div className="grid grid-cols-2 gap-1">
                   {featureLinks.map((f) => {
                     const Icon = f.icon;
@@ -142,14 +146,14 @@ export default function Navbar() {
                       <Link
                         key={f.href}
                         href={f.href}
-                        className="group/item flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-indigo-50"
+                        className="group/item flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[#333333]"
                       >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-indigo-50 text-indigo-600 transition-colors group-hover/item:bg-indigo-600 group-hover/item:text-white">
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#333333] text-[#ffea00] transition-colors group-hover/item:bg-[#ffea00] group-hover/item:text-[#1a1a1a]">
                           <Icon className="h-4.5 w-4.5" />
                         </span>
                         <span>
-                          <span className="block text-sm font-semibold text-gray-900">{f.label}</span>
-                          <span className="block text-xs text-gray-500">{f.desc}</span>
+                          <span className="block text-sm font-semibold text-[#e0e0e0]">{f.label}</span>
+                          <span className="block text-xs text-[#888888]">{f.desc}</span>
                         </span>
                       </Link>
                     );
@@ -157,7 +161,7 @@ export default function Navbar() {
                 </div>
                 <Link
                   href="/features"
-                  className="mt-1 flex items-center justify-center gap-1 rounded-xl bg-gray-50 py-2.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100"
+                  className="mt-1 flex items-center justify-center gap-1 rounded-xl bg-[#333333] py-2.5 text-sm font-medium text-[#ffea00] hover:bg-[#444444]"
                 >
                   View all features <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -166,28 +170,27 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Desktop auth */}
         <div className="hidden lg:flex items-center gap-2">
-          {isAuthenticated ? (
+          {showAuthed ? (
             <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
-              <button className="flex items-center gap-2 rounded-full border border-gray-200 py-1 pl-1 pr-2.5 hover:border-indigo-300 transition-colors">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-bold text-white">
+              <button className="flex items-center gap-2 rounded-full border border-[#444444] py-1 pl-1 pr-2.5 hover:border-[#ffea00] transition-colors">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#ffea00] to-[#ffd700] text-sm font-bold text-[#1a1a1a]">
                   {initial}
                 </span>
-                <span className="text-sm font-medium text-gray-700 max-w-[8rem] truncate">
+                <span className="text-sm font-medium text-[#aaaaaa] max-w-[8rem] truncate">
                   {user?.fullname?.split(" ")[0] || "Account"}
                 </span>
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+                <ChevronDown className="h-4 w-4 text-[#888888]" />
               </button>
               <div
                 className={`absolute right-0 top-full z-50 mt-2 w-52 transition-all duration-200 ${
                   userOpen ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-1"
                 }`}
               >
-                <div className="rounded-xl border border-gray-100 bg-white p-1.5 shadow-2xl shadow-indigo-500/10">
+                <div className="rounded-xl border border-[#444444] bg-[#2d2d2d] p-1.5 shadow-2xl shadow-[#ffea00]/10">
                   <Link
                     href="/dashboard"
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
+                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#aaaaaa] hover:bg-[#333333] hover:text-[#ffea00]"
                   >
                     <LayoutDashboard className="h-4 w-4" /> Dashboard
                   </Link>
@@ -196,7 +199,7 @@ export default function Navbar() {
                       logout();
                       router.push("/");
                     }}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50"
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-400 hover:bg-[#333333]"
                   >
                     <LogOut className="h-4 w-4" /> Logout
                   </button>
@@ -207,13 +210,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm font-semibold text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+                className="px-4 py-2 text-sm font-semibold text-[#aaaaaa] rounded-lg hover:bg-[#333333] transition-colors"
               >
                 Login
               </Link>
               <Link
                 href="/register"
-                className="group relative inline-flex items-center gap-1 overflow-hidden rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-indigo-500/30 transition-transform hover:scale-[1.03]"
+                className="group relative inline-flex items-center gap-1 overflow-hidden rounded-lg bg-gradient-to-r from-[#ffea00] to-[#ffd700] px-4 py-2 text-sm font-semibold text-[#1a1a1a] shadow-md shadow-[#ffea00]/30 transition-transform hover:scale-[1.03]"
               >
                 Get Started
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -222,9 +225,8 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile toggle */}
         <button
-          className="lg:hidden grid h-10 w-10 place-items-center rounded-lg text-gray-700 hover:bg-gray-100"
+          className="lg:hidden grid h-10 w-10 place-items-center rounded-lg text-[#aaaaaa] hover:bg-[#333333]"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -232,9 +234,8 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile sheet */}
       {open && (
-        <div className="lg:hidden border-t border-gray-100 bg-white/95 backdrop-blur-lg">
+        <div className="lg:hidden border-t border-[#444444] bg-[#2d2d2d]/95 backdrop-blur-lg">
           <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4 space-y-1">
             {publicLinks.map((l) => (
               <Link
@@ -242,15 +243,15 @@ export default function Navbar() {
                 href={l.href}
                 className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
                   isActive(pathname, l.href)
-                    ? "bg-indigo-50 text-indigo-700"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-[#333333] text-[#ffea00]"
+                    : "text-[#aaaaaa] hover:bg-[#333333]"
                 }`}
               >
                 {l.label}
               </Link>
             ))}
 
-            <p className="px-3 pt-3 text-xs font-semibold uppercase tracking-wide text-gray-400">
+            <p className="px-3 pt-3 text-xs font-semibold uppercase tracking-wide text-[#666666]">
               AI Features
             </p>
             {featureLinks.map((f) => {
@@ -259,20 +260,20 @@ export default function Navbar() {
                 <Link
                   key={f.href}
                   href={f.href}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-[#aaaaaa] hover:bg-[#333333]"
                 >
-                  <Icon className="h-4 w-4 text-indigo-600" />
+                  <Icon className="h-4 w-4 text-[#ffea00]" />
                   {f.label}
                 </Link>
               );
             })}
 
-            <div className="pt-3 border-t border-gray-100 flex flex-col gap-2 mt-2">
-              {isAuthenticated ? (
+            <div className="pt-3 border-t border-[#444444] flex flex-col gap-2 mt-2">
+              {showAuthed ? (
                 <>
                   <Link
                     href="/dashboard"
-                    className="flex items-center justify-center gap-1 rounded-lg border border-gray-200 py-2.5 text-sm font-medium text-gray-700"
+                    className="flex items-center justify-center gap-1 rounded-lg border border-[#444444] py-2.5 text-sm font-medium text-[#aaaaaa]"
                   >
                     <LayoutDashboard className="h-4 w-4" /> Dashboard
                   </Link>
@@ -281,7 +282,7 @@ export default function Navbar() {
                       logout();
                       router.push("/");
                     }}
-                    className="flex items-center justify-center gap-1 rounded-lg bg-red-50 py-2.5 text-sm font-medium text-red-600"
+                    className="flex items-center justify-center gap-1 rounded-lg bg-[#333333] py-2.5 text-sm font-medium text-red-400"
                   >
                     <LogOut className="h-4 w-4" /> Logout
                   </button>
@@ -290,13 +291,13 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/login"
-                    className="rounded-lg border border-gray-200 py-2.5 text-center text-sm font-medium text-gray-700"
+                    className="rounded-lg border border-[#444444] py-2.5 text-center text-sm font-medium text-[#aaaaaa]"
                   >
                     Login
                   </Link>
                   <Link
                     href="/register"
-                    className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 py-2.5 text-center text-sm font-semibold text-white"
+                    className="rounded-lg bg-gradient-to-r from-[#ffea00] to-[#ffd700] py-2.5 text-center text-sm font-semibold text-[#1a1a1a]"
                   >
                     Get Started
                   </Link>

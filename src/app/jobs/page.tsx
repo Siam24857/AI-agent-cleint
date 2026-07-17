@@ -36,10 +36,10 @@ const SORTS = [
 
 function gradientForLetter(letter: string): string {
   const options = [
-    "bg-gradient-to-br from-indigo-500 to-indigo-700",
-    "bg-gradient-to-br from-slate-500 to-slate-700",
-    "bg-gradient-to-br from-purple-500 to-indigo-600",
-    "bg-gradient-to-br from-blue-500 to-indigo-600",
+    "bg-gradient-to-br from-[#ffea00] to-[#ffd700]",
+    "bg-gradient-to-br from-[#ffea00] to-[#ffde00]",
+    "bg-gradient-to-br from-[#ffea00] to-[#fffacd]",
+    "bg-gradient-to-br from-[#ffea00] to-[#ffff99]",
   ];
   const idx = letter.charCodeAt(0) % options.length;
   return options[idx];
@@ -55,40 +55,40 @@ function typeLabel(type: string): string {
 function JobCard({ job }: { job: Job }) {
   const initial = (job.company || "?").charAt(0).toUpperCase();
   return (
-    <div className="bg-white rounded-xl shadow p-6 flex flex-col h-full">
+    <div className="bg-[#2d2d2d] rounded-xl shadow p-6 flex flex-col h-full">
       <div className="flex items-start gap-3">
         <div
-          className={`w-12 h-12 rounded-full ${gradientForLetter(initial)} flex items-center justify-center text-white font-bold text-lg shrink-0`}
+          className={`w-12 h-12 rounded-full ${gradientForLetter(initial)} flex items-center justify-center text-[#1a1a1a] font-bold text-lg shrink-0`}
         >
           {initial}
         </div>
         <div className="min-w-0">
-          <h3 className="font-semibold text-gray-900 truncate">{job.title}</h3>
-          <p className="text-sm text-gray-600 truncate">{job.company}</p>
+          <h3 className="font-semibold text-white truncate">{job.title}</h3>
+          <p className="text-sm text-[#aaaaaa] truncate">{job.company}</p>
         </div>
       </div>
 
-      <div className="mt-4 space-y-2 text-sm text-gray-600">
+      <div className="mt-4 space-y-2 text-sm text-[#aaaaaa]">
         <div className="flex items-center gap-1">
-          <MapPin className="w-4 h-4 text-indigo-600" />
+          <MapPin className="w-4 h-4 text-[#ffea00]" />
           <span className="truncate">{job.location}</span>
           {job.remote && (
-            <span className="ml-auto text-xs font-medium text-indigo-700 bg-indigo-50 rounded-full px-2 py-0.5">
+            <span className="ml-auto text-xs font-medium text-[#1a1a1a] bg-[#ffea00]/20 rounded-full px-2 py-0.5">
               Remote
             </span>
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-slate-700 bg-slate-100 rounded-full px-2 py-0.5">
+          <span className="text-xs font-medium text-[#ffea00] bg-[#ffea00]/20 rounded-full px-2 py-0.5">
             {typeLabel(job.type)}
           </span>
-          <span className="font-semibold text-gray-900">{job.salary}</span>
+          <span className="font-semibold text-[#ffea00]">{job.salary}</span>
         </div>
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
         {job.skills.slice(0, 3).map((skill, i) => (
-          <span key={i} className="text-xs text-indigo-700 bg-indigo-50 rounded-full px-2 py-0.5">
+          <span key={i} className="text-xs text-[#1a1a1a] bg-[#ffea00]/20 rounded-full px-2 py-0.5">
             {skill}
           </span>
         ))}
@@ -96,7 +96,7 @@ function JobCard({ job }: { job: Job }) {
 
       <Link
         href={`/jobs/${job._id}`}
-        className="mt-auto pt-4 inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+        className="mt-auto pt-4 inline-block text-sm font-semibold text-[#ffea00] hover:text-[#ffd700]"
       >
         View Details &rarr;
       </Link>
@@ -106,23 +106,23 @@ function JobCard({ job }: { job: Job }) {
 
 function SkeletonCard() {
   return (
-    <div className="bg-white rounded-xl shadow p-6 animate-pulse">
+    <div className="bg-[#2d2d2d] rounded-xl shadow p-6 animate-pulse">
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full bg-gray-200" />
+        <div className="w-12 h-12 rounded-full bg-[#444444]" />
         <div className="flex-1 space-y-2">
-          <div className="h-4 bg-gray-200 rounded w-3/4" />
-          <div className="h-3 bg-gray-200 rounded w-1/2" />
+          <div className="h-4 bg-[#444444] rounded w-3/4" />
+          <div className="h-3 bg-[#444444] rounded w-1/2" />
         </div>
       </div>
       <div className="mt-4 space-y-2">
-        <div className="h-3 bg-gray-200 rounded w-2/3" />
-        <div className="h-3 bg-gray-200 rounded w-1/2" />
+        <div className="h-3 bg-[#444444] rounded w-2/3" />
+        <div className="h-3 bg-[#444444] rounded w-1/2" />
       </div>
       <div className="mt-3 flex gap-2">
-        <div className="h-5 bg-gray-200 rounded-full w-16" />
-        <div className="h-5 bg-gray-200 rounded-full w-12" />
+        <div className="h-5 bg-[#444444] rounded-full w-16" />
+        <div className="h-5 bg-[#444444] rounded-full w-12" />
       </div>
-      <div className="mt-6 h-4 bg-gray-200 rounded w-24" />
+      <div className="mt-6 h-4 bg-[#444444] rounded w-24" />
     </div>
   );
 }
@@ -195,21 +195,20 @@ function JobsExplorePageInner() {
   }, [search, category, location, type, experience, sort, page]);
 
   return (
-    <main className="min-h-screen bg-slate-50 py-10">
+    <main className="min-h-screen bg-[#1a1a1a] py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-            <Briefcase className="w-7 h-7 text-indigo-600" /> Explore Jobs
+          <h1 className="text-3xl font-bold text-white flex items-center gap-2">
+            <Briefcase className="w-7 h-7 text-[#ffea00]" /> Explore Jobs
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-[#aaaaaa]">
             Browse {total} open roles across engineering, data, design, product and more.
           </p>
         </header>
 
-        {/* Filters */}
-        <div className="bg-white rounded-xl shadow p-6 mb-8 space-y-4">
+        <div className="bg-[#2d2d2d] rounded-xl shadow p-6 mb-8 space-y-4">
           <div className="relative">
-            <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-5 h-5 text-[#888888] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={search}
@@ -218,7 +217,7 @@ function JobsExplorePageInner() {
                 setPage(1);
               }}
               placeholder="Search by job title or company..."
-              className="w-full rounded-md border border-gray-300 pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-md border border-[#444444] pl-10 pr-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
 
@@ -229,7 +228,7 @@ function JobsExplorePageInner() {
                 setCategory(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             >
               <option value="">All Categories</option>
               {CATEGORIES.map((c) => (
@@ -247,7 +246,7 @@ function JobsExplorePageInner() {
                 setPage(1);
               }}
               placeholder="Location"
-              className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
 
             <select
@@ -256,7 +255,7 @@ function JobsExplorePageInner() {
                 setType(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             >
               <option value="">All Types</option>
               {TYPES.map((t) => (
@@ -272,7 +271,7 @@ function JobsExplorePageInner() {
                 setExperience(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             >
               <option value="">All Levels</option>
               {EXPERIENCES.map((x) => (
@@ -288,7 +287,7 @@ function JobsExplorePageInner() {
                 setSort(e.target.value);
                 setPage(1);
               }}
-              className="rounded-md border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             >
               {SORTS.map((s) => (
                 <option key={s.value} value={s.value}>
@@ -299,32 +298,28 @@ function JobsExplorePageInner() {
           </div>
         </div>
 
-        {/* Grid */}
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {loading ? (
+            Array.from({ length: 8 }).map((_, i) => (
               <SkeletonCard key={i} />
-            ))}
-          </div>
-        ) : jobs.length === 0 ? (
-          <div className="text-center py-20 text-gray-500">
-            No jobs match your filters. Try widening your search.
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {jobs.map((job) => (
+            ))
+          ) : jobs.length === 0 ? (
+            <div className="text-center py-20 text-[#888888]">
+              No jobs match your filters. Try widening your search.
+            </div>
+          ) : (
+            jobs.map((job) => (
               <JobCard key={job._id} job={job} />
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
 
-        {/* Pagination */}
         {!loading && pages > 1 && (
           <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page <= 1}
-              className="px-3 py-1.5 rounded-md border border-gray-300 text-gray-700 disabled:opacity-40 hover:bg-gray-50"
+              className="px-3 py-1.5 rounded-md border border-[#444444] text-[#aaaaaa] disabled:opacity-40 hover:bg-[#333333]"
             >
               Prev
             </button>
@@ -336,8 +331,8 @@ function JobsExplorePageInner() {
                   onClick={() => setPage(p)}
                   className={`px-3 py-1.5 rounded-md border ${
                     p === page
-                      ? "bg-indigo-600 text-white border-indigo-600"
-                      : "border-gray-300 text-gray-700 hover:bg-gray-50"
+                      ? "bg-[#ffea00] text-[#1a1a1a] border-[#ffea00]"
+                      : "border-[#444444] text-[#aaaaaa] hover:bg-[#333333]"
                   }`}
                 >
                   {p}
@@ -347,7 +342,7 @@ function JobsExplorePageInner() {
             <button
               onClick={() => setPage((p) => Math.min(pages, p + 1))}
               disabled={page >= pages}
-              className="px-3 py-1.5 rounded-md border border-gray-300 text-gray-700 disabled:opacity-40 hover:bg-gray-50"
+              className="px-3 py-1.5 rounded-md border border-[#444444] text-[#aaaaaa] disabled:opacity-40 hover:bg-[#333333]"
             >
               Next
             </button>
@@ -360,7 +355,7 @@ function JobsExplorePageInner() {
 
 export default function JobsExplorePage() {
   return (
-    <React.Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100" />}>
+    <React.Suspense fallback={<div className="min-h-screen bg-[#1a1a1a]" />}>
       <JobsExplorePageInner />
     </React.Suspense>
   );

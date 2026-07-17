@@ -43,37 +43,37 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-900">Welcome Back</h1>
+    <main className="min-h-screen flex items-center justify-center bg-[#1a1a1a] px-4">
+      <div className="w-full max-w-md bg-[#2d2d2d] rounded-xl shadow-lg p-8">
+        <h1 className="text-2xl font-bold text-center mb-6 text-white">Welcome Back</h1>
         {(error || localError) && (
-          <p className="mb-4 text-sm text-red-600 bg-red-50 rounded p-2">{error || localError}</p>
+          <p className="mb-4 text-sm text-red-400 bg-[#333333] rounded p-2">{error || localError}</p>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-[#aaaaaa]">Email</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-[#aaaaaa]">Password</label>
             <input
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 disabled:opacity-50"
+            className="w-full bg-[#ffea00] text-[#1a1a1a] py-2 rounded-md font-semibold hover:bg-[#ffd700] disabled:opacity-50"
           >
             {isLoading ? "Signing in..." : "Sign In"}
           </button>
@@ -82,7 +82,7 @@ export default function LoginPage() {
             type="button"
             onClick={handleDemo}
             disabled={isLoading}
-            className="w-full bg-emerald-600 text-white py-2 rounded-md font-semibold hover:bg-emerald-700 disabled:opacity-50"
+            className="w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 disabled:opacity-50"
           >
             Demo Login (auto-fill)
           </button>
@@ -91,7 +91,7 @@ export default function LoginPage() {
             type="button"
             onClick={handleGoogle}
             disabled={isLoading}
-            className="w-full flex items-center justify-center gap-2 border border-gray-300 text-gray-700 py-2 rounded-md font-semibold hover:bg-gray-50 disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 border border-[#444444] text-[#aaaaaa] py-2 rounded-md font-semibold hover:bg-[#333333] disabled:opacity-50"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
@@ -102,15 +102,15 @@ export default function LoginPage() {
             Continue with Google
           </button>
         </form>
-        <div className="mt-4 text-center text-sm text-gray-600">
+        <div className="mt-4 text-center text-sm text-[#888888]">
           <p>
-            <Link href="/forgot-password" className="text-indigo-600 hover:underline">
+            <Link href="/forgot-password" className="text-[#ffea00] hover:underline">
               Forgot password?
             </Link>
           </p>
           <p className="mt-2">
             No account?{" "}
-            <Link href="/register" className="text-indigo-600 hover:underline">
+            <Link href="/register" className="text-[#ffea00] hover:underline">
               Create one
             </Link>
           </p>

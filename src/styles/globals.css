@@ -3,8 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #000000;
+  --foreground: #ffea00;
+  --primary: #ffea00;
+  --primary-dark: #ffd700;
+  --card-bg: #1a1a1a;
+  --text-primary: #ffea00;
+  --text-secondary: #cccccc;
+  --muted: #333333;
+
+  /* Yellow and Black combination only */
+  --yellow-100: #ffea00;
+  --yellow-200: #ffd700;
+  --yellow-300: #ffed4e;
+  --black: #000000;
+  --black-100: #1a1a1a;
+  --black-200: #333333;
 }
 
 html,

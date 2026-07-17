@@ -28,53 +28,53 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-900">Create Account</h1>
-        {error && <p className="mb-4 text-sm text-red-600 bg-red-50 rounded p-2">{error}</p>}
+    <main className="min-h-screen flex items-center justify-center bg-[#1a1a1a] px-4">
+      <div className="w-full max-w-md bg-[#2d2d2d] rounded-xl shadow-lg p-8">
+        <h1 className="text-2xl font-bold text-center mb-6 text-white">Create Account</h1>
+        {error && <p className="mb-4 text-sm text-red-400 bg-[#333333] rounded p-2">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label className="block text-sm font-medium text-[#aaaaaa]">Full Name</label>
             <input
               type="text"
               required
               value={fullname}
               onChange={(e) => setFullname(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-[#aaaaaa]">Email</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-[#aaaaaa]">Password</label>
             <input
               type="password"
               required
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-md border border-[#444444] px-3 py-2 bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-[#ffea00]"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo-600 text-white py-2 rounded-md font-semibold hover:bg-indigo-700 disabled:opacity-50"
+            className="w-full bg-[#ffea00] text-[#1a1a1a] py-2 rounded-md font-semibold hover:bg-[#ffd700] disabled:opacity-50"
           >
             {loading ? "Creating..." : "Create Account"}
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-4 text-center text-sm text-[#888888]">
           Already have an account?{" "}
-          <Link href="/login" className="text-indigo-600 hover:underline">
+          <Link href="/login" className="text-[#ffea00] hover:underline">
             Sign in
           </Link>
         </p>

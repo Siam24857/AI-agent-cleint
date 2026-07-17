@@ -29,16 +29,16 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <main className="bg-white">
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100">
+    <main className="bg-[#1a1a1a]">
+      <section className="bg-gradient-to-br from-[#2d2d2d] via-[#333333] to-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <span className="inline-block rounded-full bg-indigo-100 px-4 py-1 text-sm font-medium text-indigo-700">
+          <span className="inline-block rounded-full bg-[#ffea00]/20 px-4 py-1 text-sm font-medium text-[#ffea00]">
             Legal
           </span>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white">
             Privacy Policy
           </h1>
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 text-[#aaaaaa]">
             Last updated: January 2026. This policy explains what we collect, why
             we collect it, and the choices you have.
           </p>
@@ -49,21 +49,21 @@ export default function PrivacyPage() {
         <div className="space-y-10">
           {sections.map((section) => (
             <div key={section.title}>
-              <h2 className="text-xl font-semibold text-slate-900">
+              <h2 className="text-xl font-semibold text-white">
                 {section.title}
               </h2>
-              <p className="mt-3 leading-relaxed text-slate-600">{section.body}</p>
+              <p className="mt-3 leading-relaxed text-[#aaaaaa]">{section.body}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 rounded-xl bg-indigo-50 p-6">
-          <p className="text-slate-700">
+        <div className="mt-12 rounded-xl bg-[#333333] p-6">
+          <p className="text-[#aaaaaa]">
             By using AI Career Mentor, you acknowledge that you have read and
             understood this Privacy Policy. Questions?{" "}
             <Link
               href="/contact"
-              className="font-medium text-indigo-600 hover:text-indigo-700"
+              className="font-medium text-[#ffea00] hover:text-[#ffd700]"
             >
               Contact our team
             </Link>

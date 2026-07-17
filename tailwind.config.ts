@@ -12,22 +12,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(214.3 31.8% 91.4%)",
-        input: "hsl(214.3 31.8% 91.4%)",
-        ring: "hsl(221.2 83.2% 53.3%)",
-        background: "hsl(0 0% 100%)",
-        foreground: "hsl(222.2 84% 4.9%)",
+        border: "#333333",
+        input: "#333333",
+        ring: "#ffea00",
+        background: "#000000",
+        foreground: "#ffea00",
         primary: {
-          DEFAULT: "hsl(221.2 83.2% 53.3%)",
-          foreground: "hsl(210 40% 98%)",
+          DEFAULT: "#ffea00",
+          foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "hsl(210 40% 96.1%)",
-          foreground: "hsl(222.2 47.4% 11.2%)",
+          DEFAULT: "#333333",
+          foreground: "#ffea00",
         },
         destructive: {
-          DEFAULT: "hsl(0 84.2% 60.2%)",
-          foreground: "hsl(210 40% 98%)",
+          DEFAULT: "#ff0000",
+          foreground: "#ffea00",
+        },
+        yellow: {
+          100: "#ffea00",
+          200: "#ffd700",
+          300: "#ffed4e",
+        },
+        black: {
+          50: "#1a1a1a",
+          100: "#333333",
+          200: "#000000",
         },
       },
       borderRadius: {
