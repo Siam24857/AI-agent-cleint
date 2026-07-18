@@ -21,7 +21,8 @@ export default function RegisterPage() {
       await authService.register(fullname, email, password);
       router.push("/login");
     } catch (err: any) {
-      setError(err?.message || "Registration failed");
+      const msg = err?.message || "Registration failed";
+      setError(msg.includes("already exists") ? "An account with this email already exists." : msg);
     } finally {
       setLoading(false);
     }
@@ -31,7 +32,19 @@ export default function RegisterPage() {
     <main className="min-h-screen flex items-center justify-center bg-[#1a1a1a] px-4">
       <div className="w-full max-w-md bg-[#2d2d2d] rounded-xl shadow-lg p-8">
         <h1 className="text-2xl font-bold text-center mb-6 text-white">Create Account</h1>
-        {error && <p className="mb-4 text-sm text-red-400 bg-[#333333] rounded p-2">{error}</p>}
+        {error && (
+          <p className="mb-4 text-sm text-red-400 bg-[#333333] rounded p-2">
+            {error}
+            {error.includes("already exists") && (
+              <>
+                {" "}
+                <Link href="/login" className="underline hover:text-[#ffea00]">
+                  Sign in instead
+                </Link>
+              </>
+            )}
+          </p>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-[#aaaaaa]">Full Name</label>
