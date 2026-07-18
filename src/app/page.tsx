@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Bannerimg from "./assete/Banner.png"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
 import { statsService, PlatformStats } from "@/services/api";
+import BannerImage from "./assete/Banner.png";
 import {
   Sparkles,
   FileText,
@@ -20,8 +22,6 @@ import {
   Users,
 } from "lucide-react";
 import FeaturesPage from "@/features/FeaturesPage";
-
-const HERO_IMAGE = "https://imagetourl.cloud/04b3j0tw.png";
 
 const formatCount = (n: number) => {
   if (n >= 1000) return `${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1)}k+`;
@@ -92,10 +92,10 @@ export default function HomePage() {
   return (
 <main>
       {/* Hero */}
-      <section className="relative overflow-hidden text-[#ffea00]">
+      <section className="relative overflow-hidden  text-[#ffea00]">
         <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+          className="absolute inset-0  z-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${BannerImage.src})` }}
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
