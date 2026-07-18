@@ -174,9 +174,18 @@ export default function Navbar() {
           {showAuthed ? (
             <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
               <button className="flex items-center gap-2 rounded-full border border-[#444444] py-1 pl-1 pr-2.5 hover:border-[#ffea00] transition-colors">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#ffea00] to-[#ffd700] text-sm font-bold text-[#1a1a1a]">
-                  {initial}
-                </span>
+                {user?.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt={user?.fullname || "User"}
+                    referrerPolicy="no-referrer"
+                    className="h-8 w-8 rounded-full object-cover"
+                  />
+                ) : (
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#ffea00] to-[#ffd700] text-sm font-bold text-[#1a1a1a]">
+                    {initial}
+                  </span>
+                )}
                 <span className="text-sm font-medium text-[#aaaaaa] max-w-[8rem] truncate">
                   {user?.fullname?.split(" ")[0] || "Account"}
                 </span>
@@ -271,6 +280,23 @@ export default function Navbar() {
             <div className="pt-3 border-t border-[#444444] flex flex-col gap-2 mt-2">
               {showAuthed ? (
                 <>
+                  <div className="flex items-center gap-3 rounded-lg bg-[#333333] px-3 py-2.5">
+                    {user?.avatar ? (
+                      <img
+                        src={user.avatar}
+                        alt={user?.fullname || "User"}
+                        referrerPolicy="no-referrer"
+                        className="h-9 w-9 rounded-full object-cover"
+                      />
+                    ) : (
+                      <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-[#ffea00] to-[#ffd700] text-sm font-bold text-[#1a1a1a]">
+                        {initial}
+                      </span>
+                    )}
+                    <span className="text-sm font-medium text-white truncate">
+                      {user?.fullname || "Account"}
+                    </span>
+                  </div>
                   <Link
                     href="/dashboard"
                     className="flex items-center justify-center gap-1 rounded-lg border border-[#444444] py-2.5 text-sm font-medium text-[#aaaaaa]"
