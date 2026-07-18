@@ -91,50 +91,147 @@ export default function HomePage() {
   return (
 <main>
       {/* Hero */}
-      <section className="relative overflow-hidden  text-[#ffea00]">
-        <div
-          className="absolute inset-0  z-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${Bannerimg.src})` }}
-        />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#ffea00]/20 px-4 py-1.5 text-sm font-medium mb-6">
-            <Zap className="h-4 w-4" /> Powered by Gemini AI
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Your AI-Powered
-            <br /> Career Growth Partner
-          </h1>
-          <p className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
-            Resume analysis, job recommendations, interview prep, and personalized
-            learning roadmaps — all in one intelligent platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => router.push(isAuthenticated ? "/recommendations" : "/register")}
-              className="bg-[#ffea00] text-[#000000] px-8 py-3 rounded-lg font-semibold hover:bg-[#ffea00] transition flex items-center justify-center gap-2"
-            >
-              {isAuthenticated ? "Go to Dashboard" : "Get Started Free"}{" "}
-              <ArrowRight className="h-4 w-4" />
-            </button>
-            <Link
-              href="/features"
-              className="border-2 border-[#ffea00] px-8 py-3 rounded-lg font-semibold hover:bg-[#ffea00]/10 transition"
-            >
-              Explore Features
-            </Link>
-          </div>
+  {/* Hero */}
+<section className="relative overflow-hidden text-gray-300 min-h-[480px] sm:min-h-[560px] lg:min-h-[650px]">
 
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {heroStats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold">{s.value}</div>
-                <div className="text-xs md:text-sm opacity-80 mt-1">{s.label}</div>
-              </div>
-            ))}
+  {/* Background */}
+  <div
+    className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center sm:bg-center lg:bg-right"
+    style={{ backgroundImage: `url(${Bannerimg.src})` }}
+  />
+
+  {/* Overlay */}
+  <div className="
+    absolute inset-0 z-0
+    bg-gradient-to-r 
+    from-black/30 
+    via-black/60 
+    to-black/90
+  "/>
+
+
+  {/* Content */}
+  <div className="
+    relative z-10
+    max-w-7xl mx-auto
+    px-4 sm:px-6 lg:px-8
+    py-20 md:py-28
+    flex justify-end
+  ">
+
+    <div className="max-w-xl text-left">
+
+      {/* Badge */}
+      <span className="
+        inline-flex items-center gap-2
+        rounded-full
+        bg-[#ffea00]/20
+        border border-[#ffea00]/30
+        px-4 py-1.5
+        text-sm font-medium
+        mb-6
+      ">
+        <Zap className="h-4 w-4 text-[#ffea00]" />
+        Powered by Gemini AI
+      </span>
+
+
+      {/* Heading */}
+      <h1 className="
+        text-4xl md:text-6xl
+        font-bold
+        mb-6
+        leading-tight
+        text-white
+      ">
+        Your AI-Powered
+        <br />
+        Career Growth Partner
+      </h1>
+
+
+      {/* Description */}
+      <p className="
+        text-lg md:text-2xl
+        mb-10
+        opacity-90
+        leading-relaxed
+      ">
+        Resume analysis, job recommendations, interview prep,
+        and personalized learning roadmaps — all in one intelligent platform.
+      </p>
+
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4">
+
+        <button
+          onClick={() =>
+            router.push(isAuthenticated ? "/recommendations" : "/register")
+          }
+          className="
+            bg-[#ffea00]
+            text-black
+            px-8 py-3
+            rounded-lg
+            font-semibold
+            hover:brightness-110
+            transition
+            flex items-center justify-center gap-2
+          "
+        >
+          {isAuthenticated ? "Go to Dashboard" : "Get Started Free"}
+          <ArrowRight className="h-4 w-4" />
+        </button>
+
+
+        <Link
+          href="/features"
+          className="
+            border-2
+            border-[#ffea00]
+            px-8 py-3
+            rounded-lg
+            font-semibold
+            hover:bg-[#ffea00]/10
+            transition
+          "
+        >
+          Explore Features
+        </Link>
+
+      </div>
+
+
+      {/* Stats */}
+      <div className="
+        mt-16
+        grid grid-cols-2 md:grid-cols-4
+        gap-6
+      ">
+        {heroStats.map((s) => (
+          <div key={s.label}>
+            <div className="text-2xl md:text-3xl font-bold text-white">
+              {s.value}
+            </div>
+
+            <div className="
+              text-xs md:text-sm
+              opacity-80
+              mt-1
+            ">
+              {s.label}
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* Features */}
       <FeaturesPage />
