@@ -125,8 +125,8 @@ export default function HomePage() {
       <span className="
         inline-flex items-center gap-2
         rounded-full
-        bg-[#ffea00]/20
-        border border-[#ffea00]/30
+        bg-[#ffea06]/20
+        border border-[#ffea06]/30
         px-4 py-1.5
         text-sm font-medium
         mb-6
@@ -170,7 +170,7 @@ export default function HomePage() {
             router.push(isAuthenticated ? "/recommendations" : "/register")
           }
           className="
-            bg-[#ffea00]
+            bg-[#c1b20c]
             text-black
             px-8 py-3
             rounded-lg
