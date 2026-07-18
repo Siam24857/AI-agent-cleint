@@ -92,13 +92,13 @@ export default function HomePage() {
   return (
 <main>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#000000] text-[#ffea00]">
+      <section className="relative overflow-hidden text-[#ffea00]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
         />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#ffea00]/20 px-4 py-1.5 text-sm font-medium mb-6">
             <Zap className="h-4 w-4" /> Powered by Gemini AI
           </span>
