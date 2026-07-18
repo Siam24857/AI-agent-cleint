@@ -1,7 +1,7 @@
 import { User } from "@/types/user";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://ai-agent-server-sable.vercel.app/api";
 
 const getToken = () => {
   if (typeof window === "undefined") return null;
