@@ -6,7 +6,6 @@ import Bannerimg from "./assete/Banner.png"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
 import { statsService, PlatformStats } from "@/services/api";
-import BannerImage from "./assete/Banner.png";
 import {
   Sparkles,
   FileText,
@@ -95,7 +94,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden  text-[#ffea00]">
         <div
           className="absolute inset-0  z-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${BannerImage.src})` }}
+          style={{ backgroundImage: `url(${Bannerimg.src})` }}
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
