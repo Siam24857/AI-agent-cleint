@@ -27,7 +27,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     if (err?.name === "AbortError") {
       throw new Error("Request timed out. Please check your connection.");
     }
-    throw new Error("Cannot reach the server. Is the backend running on port 5000?");
+    throw new Error("Cannot reach the server. Please try again later.");
   } finally {
     clearTimeout(timeout);
   }
@@ -203,6 +203,19 @@ export const authService = {
       localStorage.removeItem("token");
       localStorage.removeItem("refreshToken");
     }
+  },
+};
+
+export interface PlatformStats {
+  activeJobs: number;
+  resumesAnalyzed: number;
+  interviewsPracticed: number;
+  totalUsers: number;
+}
+
+export const statsService = {
+  async getStats() {
+    return request<{ success: boolean; data: PlatformStats }>("/stats").then((r) => r.data);
   },
 };
 

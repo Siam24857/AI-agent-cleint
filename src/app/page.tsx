@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
+import { statsService, PlatformStats } from "@/services/api";
 import {
   Sparkles,
   FileText,
@@ -19,12 +21,12 @@ import {
 } from "lucide-react";
 import FeaturesPage from "@/features/FeaturesPage";
 
-const stats = [
-  { label: "Active Job Listings", value: "12,000+" },
-  { label: "Resumes Analyzed", value: "48,000+" },
-  { label: "Interviews Practiced", value: "120,000+" },
-  { label: "Career Success Rate", value: "92%" },
-];
+const HERO_IMAGE = "https://imagetourl.cloud/04b3j0tw.png";
+
+const formatCount = (n: number) => {
+  if (n >= 1000) return `${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1)}k+`;
+  return `${n}`;
+};
 
 const testimonials = [
   {
@@ -71,11 +73,31 @@ const howItWorks = [
 export default function HomePage() {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
+  const [stats, setStats] = useState<PlatformStats | null>(null);
+
+  useEffect(() => {
+    statsService
+      .getStats()
+      .then(setStats)
+      .catch(() => setStats(null));
+  }, []);
+
+  const heroStats = [
+    { label: "Active Job Listings", value: stats ? formatCount(stats.activeJobs) : "—" },
+    { label: "Resumes Analyzed", value: stats ? formatCount(stats.resumesAnalyzed) : "—" },
+    { label: "Interviews Practiced", value: stats ? formatCount(stats.interviewsPracticed) : "—" },
+    { label: "Registered Users", value: stats ? formatCount(stats.totalUsers) : "—" },
+  ];
 
   return (
 <main>
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#000000] text-[#ffea00]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+        />
+        <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#ffea00]/20 px-4 py-1.5 text-sm font-medium mb-6">
             <Zap className="h-4 w-4" /> Powered by Gemini AI
@@ -105,7 +127,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {stats.map((s) => (
+            {heroStats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold">{s.value}</div>
                 <div className="text-xs md:text-sm opacity-80 mt-1">{s.label}</div>
