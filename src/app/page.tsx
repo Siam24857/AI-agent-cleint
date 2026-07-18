@@ -132,7 +132,7 @@ export default function HomePage() {
         mb-6
       ">
         <Zap className="h-4 w-4 text-[#ffea00]" />
-        Powered by Gemini AI
+        Powered by AI
       </span>
 
 
