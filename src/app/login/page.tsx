@@ -2,15 +2,23 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
 
-export default function LoginPage() {
-  const { login, demoLogin, isLoading, error, clearError } = useAuth();
+function LoginForm() {
+  const { login, demoLogin, isLoading, error, clearError, setToken } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [localError, setLocalError] = React.useState("");
+
+  React.useEffect(() => {
+    const token = searchParams.get("token");
+    if (token) {
+      setToken(token).then(() => router.replace("/"));
+    }
+  }, [searchParams, setToken, router]);
 
   React.useEffect(() => {
     return () => clearError();
@@ -38,7 +46,7 @@ export default function LoginPage() {
   };
 
   const handleGoogle = () => {
-    const base = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+    const base = process.env.NEXT_PUBLIC_API_URL || "https://ai-agent-server-sable.vercel.app/api";
     window.location.href = `${base}/auth/google`;
   };
 
@@ -117,5 +125,13 @@ export default function LoginPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <LoginForm />
+    </React.Suspense>
   );
 }

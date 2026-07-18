@@ -105,6 +105,7 @@ interface AuthContextType extends Omit<AuthState, "refreshToken"> {
   refreshToken: () => Promise<void>;
   clearError: () => void;
   googleLogin: () => void;
+  setToken: (token: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -178,6 +179,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/google`;
   }, []);
 
+  const setToken = React.useCallback(async (token: string) => {
+    localStorage.setItem("token", token);
+    try {
+      const user = await authService.getCurrentUser();
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: { token, refreshToken: token, user },
+      });
+    } catch (error: any) {
+      dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+      throw error;
+    }
+  }, []);
+
   const value: AuthContextType = {
     ...state,
     login,
@@ -186,6 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     refreshToken: handleRefreshToken,
     clearError,
     googleLogin,
+    setToken,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
