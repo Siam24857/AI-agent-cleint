@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
 
 function LoginForm() {
-  const { login, demoLogin, isLoading, error, clearError, setToken } = useAuth();
+  const { login, isLoading, error, clearError, setToken } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = React.useState("");
@@ -32,16 +32,6 @@ function LoginForm() {
       router.push("/");
     } catch (err: any) {
       setLocalError(err?.message || "Login failed");
-    }
-  };
-
-  const handleDemo = async () => {
-    setLocalError("");
-    try {
-      await demoLogin();
-      router.push("/");
-    } catch (err: any) {
-      setLocalError(err?.message || "Demo login failed");
     }
   };
 
@@ -84,15 +74,6 @@ function LoginForm() {
             className="w-full bg-[#ffea00] text-[#1a1a1a] py-2 rounded-md font-semibold hover:bg-[#ffd700] disabled:opacity-50"
           >
             {isLoading ? "Signing in..." : "Sign In"}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleDemo}
-            disabled={isLoading}
-            className="w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 disabled:opacity-50"
-          >
-            Demo Login (auto-fill)
           </button>
 
           <button

@@ -182,12 +182,6 @@ export const authService = {
       { method: "POST", body: JSON.stringify({ email, password }) }
     );
   },
-  async demoLogin() {
-    return request<{ success: boolean; token: string; refreshToken: string; user: User }>(
-      "/auth/demo-login",
-      { method: "POST" }
-    );
-  },
   async register(fullname: string, email: string, password: string) {
     return request<{ success: boolean; message: string }>("/auth/register", {
       method: "POST",

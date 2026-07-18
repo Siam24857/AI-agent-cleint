@@ -100,7 +100,6 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 
 interface AuthContextType extends Omit<AuthState, "refreshToken"> {
   login: (email: string, password: string) => Promise<void>;
-  demoLogin: () => Promise<void>;
   logout: () => void;
   refreshToken: () => Promise<void>;
   clearError: () => void;
@@ -143,19 +142,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const demoLogin = React.useCallback(async () => {
-    dispatch({ type: 'SET_LOADING', payload: true });
-    try {
-      const response = await authService.demoLogin();
-      dispatch({ type: 'LOGIN_SUCCESS', payload: response });
-    } catch (error: any) {
-      dispatch({ type: 'LOGIN_FAILURE', payload: error.message });
-      throw error;
-    } finally {
-      dispatch({ type: 'SET_LOADING', payload: false });
-    }
-  }, []);
-
   const handleLogout = React.useCallback(() => {
     authService.logout();
     dispatch({ type: 'LOGOUT' });
@@ -176,7 +162,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const googleLogin = React.useCallback(() => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/google`;
+    const base = process.env.NEXT_PUBLIC_API_URL || "https://ai-agent-server-sable.vercel.app/api";
+    window.location.href = `${base}/auth/google`;
   }, []);
 
   const setToken = React.useCallback(async (token: string) => {
@@ -196,7 +183,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const value: AuthContextType = {
     ...state,
     login,
-    demoLogin,
     logout: handleLogout,
     refreshToken: handleRefreshToken,
     clearError,
