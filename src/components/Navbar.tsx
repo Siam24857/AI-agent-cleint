@@ -70,7 +70,7 @@ export default function Navbar() {
     setUserOpen(false);
   }, [pathname]);
 
-  const initial = (user?.fullname || "U").charAt(0).toUpperCase();
+  const initial = (user?.fullname || user?.email || "?").charAt(0).toUpperCase();
 
   return (
     <header
